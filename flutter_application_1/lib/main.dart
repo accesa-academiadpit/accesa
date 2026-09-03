@@ -1,39 +1,35 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
-import 'pages/home.dart';
-import 'pages/chose_location.dart';
-import 'pages/loading.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-void main() => runApp(MaterialApp(
-  debugShowCheckedModeBanner: false,
-  // home: HomePage(),
-  initialRoute: '/',
-  routes: {
-    '/': (context) => Loading(),
-    '/home': (context) => Home(),
-    '/location': (context) => ChoseLocation(),
-  },
-));
+  try {
+    final response = await http.get(
+      Uri.parse('http://127.0.0.1:8000/api/cart/'),
+    );
 
+    print('==============================');
+    print('STATUS: ${response.statusCode}');
+    print('BODY: ${response.body}');
+    print('==============================');
 
+    final data = jsonDecode(response.body);
+    print('DATA: $data');
+  } catch (e) {
+    print('==============================');
+    print('API ERROR: $e');
+    print('==============================');
+  }
 
-
-
-
-
-// void main() {
-//   runApp(const MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       // theme: ThemeData(fontFamily: 'Poppins'),
-//       home: HomePage(),
-//     );
-//   }
-// }
+  runApp(
+    const MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: Text('API Test'),
+        ),
+      ),
+    ),
+  );
+}
