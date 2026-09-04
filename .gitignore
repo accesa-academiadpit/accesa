@@ -1,4 +1,4 @@
 fastAPI/.env
-
-
+__pycache__/
+*.pyc
 .env

@@ -15,7 +15,8 @@ key = os.getenv("SUPABASE_PUBLISHABLE_KEY") #aici luam url-ul si cheia din varia
 
 
 options = ClientOptions(
-    schema="tebelenoi"
+    # schema="tebelenoi"
+    schema="public" #avem nevoisi de schema auth la varianta finala
 ) #aici setam schema default pentru supabase, astfel incat sa nu fie nevoie sa o specificam de fiecare data cand facem un request
 
 
