@@ -15,7 +15,7 @@ class MainMessage {
 
       Response response =await get(Uri.parse('http://10.0.2.2:8000$location'));
             Map data = jsonDecode(response.body);
-            message=data['message'];
+            message=data.toString();
 
     }
     catch (e) {

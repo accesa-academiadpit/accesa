@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
-import 'package:flutter_application_1/services/test.dart';
+import '../services/test.dart';
 
 class Loading extends StatefulWidget {
   const Loading({super.key});
